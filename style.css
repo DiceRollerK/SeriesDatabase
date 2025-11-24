@@ -35,7 +35,7 @@ header h1 {
 main {
     margin: auto;
     width: 80%;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .meklet {
@@ -43,16 +43,18 @@ main {
     height: 90vh;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 15vh;
 }
 
 .textievads {
-    padding: 0 120px;
+    margin: 0;
+    padding: 10px 120px 10px 10px;
 }
 
-/*
-footer {
-    height: 10vh;
-    background-color: #000;
+.poga {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0d0;
+    border-radius: 1rem;
 }
-*/
