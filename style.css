@@ -44,17 +44,22 @@ main {
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 15vh;
+    padding-top: 25vh;
 }
 
 .textievads {
     margin: 0;
-    padding: 10px 120px 10px 10px;
+    font-size: 1rem;
+    padding: 1rem 7rem 1rem 1rem;
 }
 
 .poga {
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     font-size: 1rem;
     background-color: #0d0;
     border-radius: 1rem;
+}
+
+.poga:hover {
+    filter: brightness(90%);
 }
