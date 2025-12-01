@@ -38,24 +38,38 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+app.post('/search', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+    const searchTerm = req.query.term;
+    var searchValue = '';
+
+    if (!searchTerm) {
+        searchValue = 'Pier Pressure'
+    } else {
+        searchValue = searchTerm;
+    }
+    //console.log(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE (s.show_id = e.id_show)`).all());
+    res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE (s.show_id = e.id_show) AND (ename LIKE '%${searchValue}%' OR s.name LIKE '%${searchValue}%');`).all())
+})
+
+
+/*
 app.post('/clicked', (req, res) => {
     const click = {clickTime: new Date()};
     console.log(click);
-    /*
-    console.log(db);
+    console.log(req.get);
+    
 
-    db.collection('clicks').save(click, (err, result) => {
-        if (err) {
-        return console.log(err);
-        }
-        console.log('click added to db');
-        res.sendStatus(201);
-    });
-    */
-    console.log(db.prepare('SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all());
+    
+
+    //let search = document.querySelector("#text-input").value
+    //console.log(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show WHERE ename LIKE '%${search}%'`).all());
+    //console.log(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show`).all());
     //console.log(db.prepare('SELECT * FROM episode, show;').all()[1]);
-    res.send(db.prepare('SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all());
+    res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE (s.show_id = e.id_show);`).all());
 });
+*/
 
 import Database from 'better-sqlite3';
 const db = new Database('./database/nodejs-sqlite/EpisodeDatabase.db');
