@@ -52,11 +52,9 @@ app.post('/clicked', (req, res) => {
         res.sendStatus(201);
     });
     */
-    //console.log(db.prepare('SELECT * FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all());
+    console.log(db.prepare('SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all());
     //console.log(db.prepare('SELECT * FROM episode, show;').all()[1]);
-    let random = Math.floor(Math.random() * 2);
-    console.log(random);
-    res.send(db.prepare('SELECT * FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all()[Math.floor(Math.random() * 2)]);
+    res.send(db.prepare('SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show;').all());
 });
 
 import Database from 'better-sqlite3';

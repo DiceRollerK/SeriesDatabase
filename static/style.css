@@ -67,6 +67,15 @@ main {
 
 .output-container {
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #7c7;
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+.output-inside {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     background: #7c7;
