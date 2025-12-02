@@ -2,16 +2,16 @@
 Projekts ar datu bāzi
 
 # Kā izmantot saiti
-**Priekš saites ir vajadzīgs NodeJS un npm**
+**Priekš saites ir vajadzīgs NodeJS**
 
 Tad varat izmantot "start.bat" vai komandrindā galvenā projekta mapē uzrakstiet "npm start"
 
-Aizejiet uz saiti "http://localhost:3000" un tur var izmantot saiti
+Aizejiet uz saiti "http://localhost:3000" un tur var izmantot datu bāzi
 
 
-# Ko var meklēt
-Pagaidām datu bāzē daudz vērtību nav, un var tikai izvest 
+# Kā izmantot datu bāzi?
+Pagaidām datu bāzē daudz vērtību nav, un visas vērtības var izvest izmantojot pogu "Visas epizodes"
 
-* Arrested Development Sezona 1, Epizode 1 "Pilot"
-* Arrested Development Sezona 1, Epizode 10 "Pier Pressure"
-* Seinfeld Sezona 5, Epizode 14 "The Marine Biologist"
+Ko meklē un žanra izvēles neko vēl nedara, bet var ierakstīt epizodes vai seriāla nosaukumu meklēšanas joslā un uzspiežot uz pogu "meklēt" var redzēt visas epizodes ar tādu nosaukumu vai tā nosauktu seriālu
+
+Arī uzspiežot uz seriāla logo var saņemt visas epizodes no tā seriāla kas ir datu bāzē

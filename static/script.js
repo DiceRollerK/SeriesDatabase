@@ -25,7 +25,6 @@ document.getElementById("btn-all").addEventListener("click", () =>{
         veidosana(data);
     })
     .catch(function(error) {
-        console.log('5')
         console.log(error);
     });
 })
@@ -62,7 +61,6 @@ document.getElementById("btn").addEventListener("click", () => {
         }
     })
     .catch(function(error) {
-        console.log('10')
         console.log(error);
     });
 });
@@ -70,6 +68,7 @@ document.getElementById("btn").addEventListener("click", () => {
 function seriesEpisodes() {
     console.log(this.alt)
     let textValue = this.alt;
+    textValue = encodeURIComponent(textValue);
 
    fetch(`/search?showid=${textValue}`, {method: 'POST'})
     .then(function(response) {
@@ -101,7 +100,6 @@ function seriesEpisodes() {
         }
     })
     .catch(function(error) {
-        console.log('10')
         console.log(error);
     });
 }

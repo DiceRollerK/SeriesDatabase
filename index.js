@@ -45,8 +45,9 @@ app.post('/search', (req, res) => {
     let searchTerm;
     if (req.query.showid) { 
         //console.log('19')
-        //console.log(db.prepare(`SELECT show_id FROM show WHERE name = '${req.query.showid}' LIMIT 1`).all());
-        searchSID = db.prepare(`SELECT show_id FROM show WHERE name = '${req.query.showid}' LIMIT 1`).all()[0].show_id;
+        console.log(db.prepare(`SELECT show_id FROM show WHERE name = '${req.query.showid}' LIMIT 1`).all()[0]);
+        let a = decodeURIComponent(req.query.showid);
+        searchSID = db.prepare(`SELECT show_id FROM show WHERE name = '${a}' LIMIT 1`).all()[0].show_id;
         console.log(searchSID)
     }
     if (req.query.term) {
@@ -84,6 +85,6 @@ app.get('/clicked', (req, res) => {
 });
 
 import Database from 'better-sqlite3';
-const db = new Database('./database/nodejs-sqlite/EpisodeDatabase.db');
+const db = new Database('./database/EpisodeDatabase.db');
 
 console.log("Done");
