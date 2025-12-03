@@ -24,7 +24,7 @@ document.getElementById("btn").addEventListener("click", () => {
     let textValue = document.getElementById('text-input').value;
     if (textValue == '') textValue = 'Pier Pressure';
 
-   fetch(`/search?term=${textValue}`, {method: 'POST'})
+   fetch(`/search?term=${textValue}${document.getElementById('inputGroupSelect02').value != "Žanrs" ? '&genre='+document.getElementById('inputGroupSelect02').value : ''}`, {method: 'POST'})
     .then(function(response) {
         if(response.ok) {
             return response.json();
@@ -99,6 +99,7 @@ document.getElementById('btn-all-series').addEventListener('click', () => {
 });
 
 function neatrada() {
+    document.getElementById('series').style.display = 'none';
     document.getElementById('output').classList.add('bg-danger');
     let div = document.createElement("div");
     document.getElementById("output").appendChild(div);
@@ -114,11 +115,15 @@ function serialaVeidosana(data, i) {
     let img = document.createElement("img");
     img.setAttribute('alt', `${data[i].name}`);
     img.classList.add('logo');
-    div.appendChild(img);
-    div.classList.add('card')
+
+    let div3 = document.createElement('div');
+    div.appendChild(div3);
+
+    div3.classList.add('card', 'm-2', 'bg-success-subtle');
+    div3.appendChild(img);
 
     let div2  = document.createElement("div");
-    div.appendChild(div2);
+    div3.appendChild(div2);
     div2.classList.add('card-body', 'p-2');
                 
     let h5 = document.createElement('h5');
@@ -134,9 +139,11 @@ function serialaVeidosana(data, i) {
     h5.innerHTML = `${data[i].name}`
     text.innerHTML = 
     `
+    Raidīšanas gadi: ${data[i].start_date} līdz ${data[i].end_date}<br>
     Žanri: ${data[i].genre1}${data[i].genre2 != null ? ', '+data[i].genre2.toLowerCase() : ''}${data[i].genre3 != null ? ', '+data[i].genre3.toLowerCase() : ''}<br>
-    Tēmas: ${data[i].theme1}, ${data[i].theme2.toLowerCase()}, ${data[i].theme3.toLowerCase()}<br>
+    Tēmas: ${data[i].theme1}, ${data[i].theme2.toLowerCase()}, ${data[i].theme3.toLowerCase()}
     `;
+    div3.style.display = 'flex';
     div.style.display = 'flex';
     img.addEventListener("click", (seriesEpisodes));
 }
@@ -175,7 +182,8 @@ function veidosana(data, serials) {
     `
     Sezona-epizode: ${data[i].season}-${data[i].episode}<br>
     Raidīšanas datums: ${data[i].date}<br>
-    Žanrs: ${data[i].genre}
+    Žanrs: ${data[i].genre}<br>
+    Stāsta elementi: ${data[i].element1}${data[i].element2 != null ? ', '+data[i].element2.toLowerCase() : ''}${data[i].element3 != null ? ', '+data[i].element3.toLowerCase() : ''}
     `;
     img.addEventListener("click", (seriesEpisodes));
     };

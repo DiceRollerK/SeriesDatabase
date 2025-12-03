@@ -34,7 +34,6 @@ app.post('/search', (req, res) => {
         //console.log(db.prepare(`SELECT show_id FROM show WHERE name = '${req.query.showid}' LIMIT 1`).all()[0]);
         //console.log(req.query.showid)
         let a = decodeURIComponent(req.query.showid);
-        console.log(`SELECT show_id FROM show WHERE name = '${a}' LIMIT 1`)
         searchSID = db.prepare(`SELECT show_id FROM show WHERE name = '${a}' LIMIT 1`).all()[0].show_id;
     }
     if (req.query.term) {
@@ -51,8 +50,8 @@ app.post('/search', (req, res) => {
         WHERE (s.show_id = e.id_show) AND (s.show_id = ${searchSID}) AND (time_id = id_time) AND (genre_id = id_genre) AND (story_id = id_story) AND (theme_id = id_theme)
         ORDER BY season ASC, episode ASC`).all());
     } else if (req.query.term) {
-        res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s 
-        WHERE (s.show_id = e.id_show) AND (ename LIKE '%${searchTerm}%' OR s.name LIKE '%${searchTerm}%');`).all());
+        res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s, story 
+        WHERE (s.show_id = e.id_show) AND (ename LIKE '%${searchTerm}%' OR s.name LIKE '%${searchTerm}%') AND (story_id = id_story)${req.query.genre ? ` AND (genre LIKE '%${req.query.genre}%')` : ''};`).all());
     }
 })
 
@@ -62,18 +61,15 @@ app.get('/clicked', (req, res) => {
     
     //let search = document.querySelector("#text-input").value
     //console.log(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE s.show_id = e.id_show WHERE ename LIKE '%${search}%'`).all());
-    res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s WHERE (s.show_id = e.id_show);`).all());
+    res.send(db.prepare(`SELECT *, e.name AS ename FROM episode AS e, show AS s, story WHERE (s.show_id = e.id_show) AND (story_id = id_story);`).all());
 });
 
 app.get('/show', (req, res) => {
-    console.log(db.prepare(`SELECT * FROM show, time, genre, theme WHERE (time_id = id_time) AND (genre_id = id_genre) AND (theme_id = id_theme)`).all())
     res.send(db.prepare(`SELECT * FROM show, time, genre, theme WHERE (time_id = id_time) AND (genre_id = id_genre) AND (theme_id = id_theme)`).all());
 });
 
 import Database from 'better-sqlite3';
 const db = new Database('./database/EpisodeDatabase.db');
-
-console.log(db.prepare('SELECT * FROM show, theme, genre WHERE (theme_id = id_theme) AND (genre_id = id_genre)').all()[0]);
 
 /*
 function meklet(search_id) {

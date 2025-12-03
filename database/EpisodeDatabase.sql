@@ -32,7 +32,7 @@ INSERT INTO story VALUES(1,'Balle','Krāpšana','Pirāti');
 INSERT INTO story VALUES(3,'Marihuāna','Reibonis','Policija');
 INSERT INTO story VALUES(4,'Elle','Darījums ar velnu','Nožēlošana');
 INSERT INTO story VALUES(5,'Roboti','Kaķi','Postapokalipse');
-INSERT INTO story VALUES(6,'Cīņas','Atriebība','Pazemes');
+INSERT INTO story VALUES(6,'Cīņas','Atriebība','Distopija');
 INSERT INTO story VALUES(7,'Liecinieks','Bēgšana','Cilpa');
 INSERT INTO story VALUES(8,'Briesmonis','Iztēle','Ieslēgts');
 
