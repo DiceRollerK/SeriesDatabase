@@ -87,7 +87,7 @@ INSERT INTO episode VALUES(12,'Beyond the Aquila Rift','2019-03-15',1,7,'Drāma'
 INSERT INTO episode VALUES(13,'The Internet','2017-08-25',1,5,'Drāma',3,13,0);
 INSERT INTO episode VALUES(14,'The Night Babby Died','2020-09-25',4,10,'Drāma',3,14,0);
 INSERT INTO episode VALUES(15,'The Murderer','2020-07-24',4,1,'Drāma',3,15,0);
-INSERT INTO episode VALUES(16,'Foam Party','2020-09-04',4,10,'Šausmas',3,16,0);
+INSERT INTO episode VALUES(16,'Foam Party','2020-09-04',4,7,'Šausmas',3,16,0);
 
 CREATE TABLE show (
 	show_id	INT PRIMARY KEY NOT NULL,

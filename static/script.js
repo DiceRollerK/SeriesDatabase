@@ -58,7 +58,7 @@ document.getElementById('btn-favourites').addEventListener('click', () => {
     .then(function(data) {
         document.getElementById('output').innerHTML = "";
         document.getElementById('series').innerHTML = '';
-        document.getElementById('series').style.display = 'flex';
+        document.getElementById('series').style.display = 'none';
 
         if (data[0] === undefined) {
             neatrada();
@@ -70,6 +70,7 @@ document.getElementById('btn-favourites').addEventListener('click', () => {
                     episodes.push(data[i]);
                 }
                 if (data[i].favourite == 1) {
+                    document.getElementById('series').style.display = 'flex';
                     series.push(data[i]);
                 }
             }
@@ -135,7 +136,6 @@ function search() {
         } else {
             outputData = data;
             page = 0;
-            console.log(data.length);
             if (data.length > 6) {
                 for (let i = 0; i < 6; i++) {
                     veidosana(data, i);
@@ -268,10 +268,20 @@ function seriesEpisodes() {
         if (data[0] === undefined) {
             neatrada();
         } else {
-            for (let i = 0; i < data.length; i++) {
-            veidosana(data, i);
+            outputData = data;
+            page = 0;
+            document.getElementById('series').innerHTML = '';
+            if (data.length > 6) {
+                for (let i = 0; i < 6; i++) {
+                    veidosana(data, i);
+                }
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                    veidosana(data, i);
+                }
             }
             serialaVeidosana(data, 0);
+            arrowCheck();
         }
     })
     .catch(function(error) {
